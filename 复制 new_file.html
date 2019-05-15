@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>遮罩层</title>
+		<script type="text/javascript" src="js/echarts.min.js" ></script>
+	</head>
+	<body>
+		<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+	    <div id="main" style="width: 1000px;height:400px;"></div>
+	    <script type="text/javascript">
+	        // 基于准备好的dom，初始化echarts实例
+	        var myChart = echarts.init(document.getElementById('main'));
+	
+	        option = {
+	        	title: {
+                	text: '代码量/代码库大小',
+                	x: 'center',
+	            },
+	            tooltip: {
+	            	 formatter: '代码量:{c} <br/>代码库大小 : {b}'
+	            },
+			    xAxis: {
+			        type: 'category',
+			        name: '代码库大小',
+			        boundaryGap: false,
+			        data: ['130M', '40M', '80M', '300M', '1300M', '1500M', '2000M']
+			    },
+			    yAxis: {
+			        type: 'value',
+			        name: '代码量 个(单位)'
+			    },
+			    series: [{
+			        data: [0, 932, 901, 934, 1290, 1330, 1320],
+			        type: 'line',
+			        areaStyle: {
+			        	color: 'blue'
+			        }
+			    }]
+			};
+	
+	        // 使用刚指定的配置项和数据显示图表。
+	        myChart.setOption(option);
+	        
+	        
+	    </script>
+	</body>
+</html>

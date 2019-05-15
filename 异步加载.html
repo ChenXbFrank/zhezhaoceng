@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>遮罩层</title>
+		<script type="text/javascript" src="js/echarts.min.js" ></script>
+		<script type="text/javascript" src="js/jquery-3.3.1.js" ></script>
+	</head>
+	<body>
+		<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+	    <div id="main" style="width: 1000px;height:400px;"></div>
+	    <script type="text/javascript">
+	        // 基于准备好的dom，初始化echarts实例
+	        var myChart = echarts.init(document.getElementById('main'));
+	
+	        myChart.setOption({
+	        	title: {
+                	text: '代码量/代码库大小',
+                	x: 'center',
+	            },
+	            tooltip: {
+	            	 formatter: '代码量:{c}个 <br/>代码库大小 : {b}'
+	            },
+			    xAxis: {
+			        type: 'category',
+			        name: '代码库大小',
+			        data: []
+			    },
+			    yAxis: {
+			        type: 'value',
+			        name: '代码量 个(单位)'
+			    },
+			    series: [{
+			        data: [],
+			        type: 'line',
+			        areaStyle: {
+			        	color: '#E0FFFF'
+			        }
+			    }]
+			});
+	        
+	        // 异步加载数据
+			$.get('http://127.0.0.1:8080/get').done(function (data) {
+				console.log("666",data.data);
+				console.log("888",data.categories);
+			    // 填入数据
+			    myChart.setOption({
+			        xAxis: {
+			            data: data.categories
+			        },
+			        series: [{
+			            data: data.data
+			        }]
+			    });
+			});
+	    </script>
+	</body>
+</html>

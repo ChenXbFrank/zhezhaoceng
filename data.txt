@@ -1,0 +1,29 @@
+{"data":[200,300,100,600,1200,2000],"categories":["10M","50M","200M","300M","1200M","180M"]}
+
+
+
+@GetMapping("/get")
+    public Object get(){
+        List<Integer> data =new ArrayList<>();
+        data.add(200);
+        data.add(300);
+        data.add(100);
+        data.add(600);
+        data.add(1200);
+        data.add(2000);
+        List<String> categories =new ArrayList<>();
+        categories.add("10M");
+        categories.add("50M");
+        categories.add("200M");
+        categories.add("300M");
+        categories.add("1200M");
+        categories.add("180M");
+        Map<Object,Object> map = new HashMap<>();
+        map.put("data",data);
+        map.put("categories",categories);
+        return map;
+    }
+    
+
+
+https://blog.csdn.net/weixin_37580235/article/details/82291028

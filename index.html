@@ -1,0 +1,51 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>遮罩层</title>
+    <style>
+    .dark{ 
+		z-index: 100; 
+		position:fixed;
+		left:0; 
+		right:0; 
+		bottom:0; 
+		top:0; 
+		background:rgba(0,0,0,0.1);
+    }
+    .white{
+		z-index:104;
+		position:fixed;
+		top:250px;
+		bottom:250px;
+		right:600px;
+		left:600px;
+		background: rgba(255,192,203,0.8);
+		border-radius:10px;
+		text-align:center;
+		line-height:200px;
+    } 	
+    </style>
+    <script>
+    function demo1(){
+		document.getElementById('dark').style.display = 'block';
+		document.getElementById('white').style.display = 'block';
+    }
+    function demo2(){
+		document.getElementById('white').style.display = 'none';
+		document.getElementById('dark').style.display = 'none';
+		alert("你再试试!");
+    }
+    </script>
+</head>
+<body>
+    <div id="demo">
+	<a href="http://www.baidu.com">百度一下</a>
+    </div>
+    <a href="#" onclick="demo1()">测试</a>
+ 
+    <div class="dark" style="display: none;" id="dark"></div>
+    <div class="white" style="display: none;" id="white" onclick="demo2()">
+        不用看了，点哪里都不行，你只能点我
+    </div>
+</body>
+</html>
